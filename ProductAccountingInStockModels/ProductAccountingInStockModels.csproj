@@ -5,8 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ShipmentStatus.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="BindingModels\" />
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Enums\ShipmentStatus.cs" />
   </ItemGroup>
 
 </Project>
