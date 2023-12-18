@@ -131,7 +131,7 @@ namespace ProductAccountingInStockView.Windows
                 ProviderViewModel k = (ProviderViewModel)comboBoxProvider.SelectedValue;
                 provid = k.Id;
             }
-            catch(Exception ex)
+            catch
             {
                 provid = (int)comboBoxProvider.SelectedValue;
             }

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace ProductAccountingInStockView.Windows
 {
@@ -22,6 +16,24 @@ namespace ProductAccountingInStockView.Windows
         private void MainFormEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void поставщикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<ProvidersForm>();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            }
+        }
+
+        private void поставкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<ShipmentsForm>();
+            form.CurrentId = CurrentEmployeeId;
+            form.CurrentLogin = CurrentEmployeeLogin;
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ProductAccountingInStockDatabase.Implements
             }
             using var context = new ProductAccountingInStockDatabase();
             var ds = context.DirectionShipments
-            .FirstOrDefault(rec => rec.DirectionName == model.DirectionName || rec.Id == model.Id);
+            .FirstOrDefault(rec => rec.DirectionName.Contains(model.DirectionName) || rec.Id == model.Id);
             return ds != null ? CreateModel(ds) : null;
         }
         public void Insert(DirectionBindingModel model)

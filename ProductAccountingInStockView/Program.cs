@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using ProductAccountingInStockBusinessLogic.BusinessLogicContracts;
 using ProductAccountingInStockBusinessLogic.BusinessLogics;
+using ProductAccountingInStockBusinessLogic.OfficePackage.Implements;
+using ProductAccountingInStockBusinessLogic.OfficePackage;
 using ProductAccountingInStockDatabase.Implements;
 using ProductAccountingInStockDatabase.StoragesContracts;
 using ProductAccountingInStockView.Windows;
@@ -49,6 +51,11 @@ namespace ProductAccountingInStockView
             currentContainer.RegisterType<IProductLogic, ProductBusinessLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IProviderLogic, ProviderBusinessLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IShipmentLogic, ShipmentBusinessLogic>(new HierarchicalLifetimeManager());
+
+            currentContainer.RegisterType<IReportLogic, ReportBusinessLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new HierarchicalLifetimeManager());
+
+            currentContainer.RegisterType<IForecastingLogic, ForecastingBusinessLogic>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }

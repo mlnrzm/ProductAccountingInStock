@@ -6,8 +6,6 @@ using ProductAccountingInStockModels.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductAccountingInStockDatabase.Implements
 {
@@ -117,13 +115,31 @@ namespace ProductAccountingInStockDatabase.Implements
                 throw new Exception("Поставка не найдена");
             }
         }
+
+        public Dictionary<string, int> GetProducts(int shipmentId)
+        {
+            Dictionary<string, int> products = new Dictionary<string, int>();
+
+            using var context = new ProductAccountingInStockDatabase();
+            var shipment_products = context.ShipmentProducts.Where(rec => rec.ShipmentId == shipmentId).ToList();
+            var orig_products = context.Products.ToList();
+
+            foreach (var prod in shipment_products) 
+            {
+                var current_product = orig_products.FirstOrDefault(rec => rec.Id == prod.ProductId);
+                products.Add(current_product.ProductName, prod.Count);
+            }
+            return products;
+        }
+
         private static Shipment CreateModel(ShipmentBindingModel model, Shipment shipment, ProductAccountingInStockDatabase context)
         {
+            decimal shipment_sum = 0;
+
             shipment.EmployeeId = model.EmployeeId;
             shipment.ProviderId = model.ProviderId;
             shipment.DirectionShipmentId = model.DirectionShipmentId;
             shipment.ShipmentStatus = model.ShipmentStatus;
-            shipment.Sum = model.Sum;
             shipment.DateCreate = model.DateCreate;
             shipment.DateImplement = model.DateImplement;
 
@@ -154,9 +170,19 @@ namespace ProductAccountingInStockDatabase.Implements
                             Count = pc.Value.Item2
                         });
                         context.SaveChanges();
+                        shipment_sum += Convert.ToDecimal(context.Products.FirstOrDefault(rec => rec.Id == pc.Key).Cost * pc.Value.Item2);
                     }
                 }
             }
+            if (model.ShipmentProducts != null && model.ShipmentProducts.Count != 0)
+            {
+                foreach (var pc in model.ShipmentProducts)
+                {
+                    context.SaveChanges();
+                    shipment_sum += Convert.ToDecimal(context.Products.FirstOrDefault(rec => rec.Id == pc.Key).Cost * pc.Value.Item2);
+                }
+            }
+            shipment.Sum = shipment_sum;
             return shipment;
         }
         private static ShipmentViewModel CreateModel(Shipment shipment)

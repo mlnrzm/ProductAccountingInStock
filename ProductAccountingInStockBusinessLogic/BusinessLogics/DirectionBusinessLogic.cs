@@ -18,7 +18,7 @@ namespace ProductAccountingInStockBusinessLogic.BusinessLogics
 
         public List<DirectionViewModel> Read(DirectionBindingModel model)
         {
-            if (model != null && model.Id.HasValue)
+            if (model != null)
             {
                 return new List<DirectionViewModel> { _directionStorage.GetElement(model) };
             }

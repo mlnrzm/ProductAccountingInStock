@@ -12,5 +12,6 @@ namespace ProductAccountingInStockDatabase.StoragesContracts
         void Insert(ShipmentBindingModel model);
         void Update(ShipmentBindingModel model);
         void Delete(ShipmentBindingModel model);
+        Dictionary<string, int> GetProducts(int shipmentId);
     }
 }

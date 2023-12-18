@@ -41,6 +41,8 @@
             buttonSend = new System.Windows.Forms.Button();
             buttonFinish = new System.Windows.Forms.Button();
             buttonFilter = new System.Windows.Forms.Button();
+            buttonForecasting = new System.Windows.Forms.Button();
+            buttonDelFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShipments).BeginInit();
             SuspendLayout();
             // 
@@ -165,11 +167,33 @@
             buttonFilter.UseVisualStyleBackColor = true;
             buttonFilter.Click += buttonFilter_Click;
             // 
+            // buttonForecasting
+            // 
+            buttonForecasting.Location = new System.Drawing.Point(1129, 274);
+            buttonForecasting.Name = "buttonForecasting";
+            buttonForecasting.Size = new System.Drawing.Size(217, 67);
+            buttonForecasting.TabIndex = 13;
+            buttonForecasting.Text = "Приблизительная дата прибытия";
+            buttonForecasting.UseVisualStyleBackColor = true;
+            buttonForecasting.Click += buttonForecasting_Click;
+            // 
+            // buttonDelFilter
+            // 
+            buttonDelFilter.Location = new System.Drawing.Point(358, 15);
+            buttonDelFilter.Name = "buttonDelFilter";
+            buttonDelFilter.Size = new System.Drawing.Size(101, 28);
+            buttonDelFilter.TabIndex = 14;
+            buttonDelFilter.Text = "Сбросить";
+            buttonDelFilter.UseVisualStyleBackColor = true;
+            buttonDelFilter.Click += buttonDelFilter_Click;
+            // 
             // ShipmentsForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1367, 600);
+            Controls.Add(buttonDelFilter);
+            Controls.Add(buttonForecasting);
             Controls.Add(buttonFilter);
             Controls.Add(buttonFinish);
             Controls.Add(buttonSend);
@@ -208,5 +232,7 @@
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.Button buttonFinish;
         private System.Windows.Forms.Button buttonFilter;
+        private System.Windows.Forms.Button buttonForecasting;
+        private System.Windows.Forms.Button buttonDelFilter;
     }
 }

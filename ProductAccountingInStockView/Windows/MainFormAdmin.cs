@@ -29,13 +29,17 @@ namespace ProductAccountingInStockView.Windows
         {
             var form = Program.Container.Resolve<EmployeesForm>();
             form.CurrentAdminId = CurrentAdminId;
-            form.Show();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
 
         private void поставщикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Program.Container.Resolve<ProvidersForm>();
-            form.Show();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
 
         private void поставкиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +47,14 @@ namespace ProductAccountingInStockView.Windows
             var form = Program.Container.Resolve<ShipmentsForm>();
             form.CurrentId = CurrentAdminId;
             form.CurrentLogin = CurrentAdminLogin;
-            form.Show();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            }
+        }
+
+        private void MainFormAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
