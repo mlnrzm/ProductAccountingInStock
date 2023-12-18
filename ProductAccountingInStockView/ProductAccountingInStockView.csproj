@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Windows\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,6 +15,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductAccountingInStockBusinessLogic\ProductAccountingInStockBusinessLogic.csproj" />
+    <ProjectReference Include="..\ProductAccountingInStockDatabase\ProductAccountingInStockDatabase.csproj" />
   </ItemGroup>
 
 </Project>

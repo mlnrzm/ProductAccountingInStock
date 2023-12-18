@@ -13,7 +13,7 @@ namespace ProductAccountingInStockDatabase.DatabaseModels
         public int PostId { get; set; }
 
         // Id руководителя, который добавил сотрудника //
-        public int SupervisorId { get; set; }
+        public int? SupervisorId { get; set; }
 
         // ФИО сотрудника //
         [Required]

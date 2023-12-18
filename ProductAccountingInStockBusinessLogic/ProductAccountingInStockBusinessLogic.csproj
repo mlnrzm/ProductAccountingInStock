@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLogics\" />
     <Folder Include="OfficePackage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductAccountingInStockDatabase\ProductAccountingInStockDatabase.csproj" />
   </ItemGroup>
 
 </Project>

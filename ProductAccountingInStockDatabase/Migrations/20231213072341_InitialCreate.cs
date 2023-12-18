@@ -55,7 +55,7 @@ namespace ProductAccountingInStockDatabase.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PostId = table.Column<int>(type: "int", nullable: false),
-                    SupervisorId = table.Column<int>(type: "int", nullable: false),
+                    SupervisorId = table.Column<int>(type: "int", nullable: true),
                     EmployeeFIO = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployeeLogin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployeePassword = table.Column<string>(type: "nvarchar(max)", nullable: false)
